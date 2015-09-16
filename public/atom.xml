@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2015-09-15T20:35:48+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[longshen Blog]]></title>
+  <link href="https://longshen-blog.herokuapp.com//atom.xml" rel="self"/>
+  <link href="https://longshen-blog.herokuapp.com//"/>
+  <updated>2015-09-16T22:07:32+08:00</updated>
+  <id>https://longshen-blog.herokuapp.com//</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[longshen]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
