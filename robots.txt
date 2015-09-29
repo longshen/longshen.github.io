@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://longshen.github.io/sitemap.xml 

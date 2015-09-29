@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[longshen Blog]]></title>
+  <link href="http://longshen.github.io/atom.xml" rel="self"/>
+  <link href="http://longshen.github.io/"/>
+  <updated>2015-09-30T01:09:29+08:00</updated>
+  <id>http://longshen.github.io/</id>
+  <author>
+    <name><![CDATA[longshen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[配置OctoPress]]></title>
+    <link href="http://longshen.github.io/blog/2015/09/16/pei-zhi-octopress/"/>
+    <updated>2015-09-16T22:23:05+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/09/16/pei-zhi-octopress</id>
+    <content type="html"><![CDATA[<h1>配置</h1>
+]]></content>
+  </entry>
+  
+</feed>
