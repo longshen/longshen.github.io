@@ -4,7 +4,7 @@
   <title><![CDATA[longshen]]></title>
   <link href="http://longshen.github.io/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-09-30T09:06:16+08:00</updated>
+  <updated>2015-10-24T21:00:25+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -14,11 +14,121 @@
 
   
   <entry>
-    <title type="html"><![CDATA[配置OctoPress]]></title>
-    <link href="http://longshen.github.io/blog/2015/09/16/pei-zhi-octopress/"/>
-    <updated>2015-09-16T22:23:05+08:00</updated>
-    <id>http://longshen.github.io/blog/2015/09/16/pei-zhi-octopress</id>
-    <content type="html"><![CDATA[<h1>配置</h1>
+    <title type="html"><![CDATA[使用OctoPress]]></title>
+    <link href="http://longshen.github.io/blog/2015/10/24/use-octopress/"/>
+    <updated>2015-10-24T15:28:35+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/10/24/use-octopress</id>
+    <content type="html"><![CDATA[<h2>一、搭建OctoPress</h2>
+
+<p><a href="http://c4fun.cn/blog/2013/11/19/hello-octopress/#more">安装发布github</a></p>
+
+<h2>二、常用命令</h2>
+
+<h3>blog管理</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#新建文章</span>
+</span><span class='line'>rake new_post<span class="o">[</span>“new_title”<span class="o">]</span>
+</span><span class='line'><span class="c">#生成网站</span>
+</span><span class='line'>rake generate
+</span><span class='line'><span class="c">#本地预览网站</span>
+</span><span class='line'>rake preview
+</span><span class='line'><span class="c">#部署</span>
+</span><span class='line'>rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>源码管理</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#git相关命令</span>
+</span><span class='line'>git add .
+</span><span class='line'>git commit -m <span class="s2">&quot;message&quot;</span>
+</span><span class='line'>git push origin <span class="nb">source</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>三、常见问题</h2>
+
+<h3>rake命令无法加特殊字符（如“’等）</h3>
+
+<p>常用的命令是<code>rake new_post[“new_title”]</code>。但是在ZSH下，输入时会提示错误：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>zsh: no matches found: new_post<span class="o">[</span>new_title<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们可以用转义符来解决这一问题，但是每次这样操作会特别繁琐。解决方案是在~/.zshrc文件下，加入这样一行内容：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">alias </span><span class="nv">rake</span><span class="o">=</span><span class="s2">&quot;noglob rake&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>generate出现invalid byte sequence</h3>
+
+<p>MAC或者Windows下运行<code>rake genreate</code>出现invalid byte sequence，如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>jekyll 2.5.3 <span class="p">|</span> Error:  invalid byte sequence in US-ASCII
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>MAC或者Windows默认是使用ASCII编码，需要设置UTF-8编码。解决方案是在~/.zshrc文件下，加入这样两行内容：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">export </span><span class="nv">LC_ALL</span><span class="o">=</span>zh_CN.UTF-8
+</span><span class='line'><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>zh_CN.UTF-8
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>generate出现Pygments can&rsquo;t parse</h3>
+
+<p>运行<code>rake genreate</code>出现Pygments can&rsquo;t parse错误，如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>jekyll 2.5.3 <span class="p">|</span> Error:  Pygments can<span class="err">&#39;</span>t parse unknown language: zsh.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>jekyll的语法高亮无法识别zsh语言。是由于编码文章时，使用如下代码块。</p>
+
+<blockquote><p>```zsh
+XXX
+```</p></blockquote>
+
+<p>最简单的解决方案是，代码块不使用zsh，改为其他语法相近的语言，如sh，bash。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[首篇]]></title>
+    <link href="http://longshen.github.io/blog/2015/10/24/first-article/"/>
+    <updated>2015-10-24T15:26:30+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/10/24/first-article</id>
+    <content type="html"><![CDATA[<h3>为什么用OctoPress</h3>
+
+<p>  以前总数是在各种blog网站（比如简书、csdn、cppblog等）注册个人blog，在其限定的框架内编写文章。偶尔遇到某些功能blog框架无法支持便非常不爽。故慢慢的不在blog更新文章，转而都记录到Evernote上，或者团队wiki（Confluence、Wordpress）。</p>
+
+<p>  而Evernote毕竟只是自己查看，团队wiki只有团队的少数人阅读。<strong>一方面不利于分享；另一方面由于缺少读者，导致文章写得随意，总结不够充分深入，不利于自己对知识的吸收和积累；还有人性有强烈的被认可赞同的欲望，Blog、公众号等能驱使自己多总结分享文章。</strong></p>
+
+<p>  前段时间换了MacPro笔记本，想想在Mac下搭个Blog，多写写文章分享出来。于是便发现了OctoPress</p>
+
+<h3>怎么用OctoPress</h3>
+
+<p>发现OctoPress后，第一件事当然是配置环境，搭建起来。然后是查找各种主题、插件等。但琢磨了半天，<em>发现主题再炫，插件再好，如果没有内容，然并卵</em>。故先不把精力放到主题、插件及使用方法上，开始写文章，在使用过程中遇到问题，再研究解决。</p>
 ]]></content>
   </entry>
   
