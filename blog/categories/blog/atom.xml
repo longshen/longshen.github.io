@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Blog | longshen]]></title>
+  <link href="http://longshen.github.io/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://longshen.github.io/"/>
+  <updated>2015-10-30T22:40:14+08:00</updated>
+  <id>http://longshen.github.io/</id>
+  <author>
+    <name><![CDATA[longshen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用OctoPress]]></title>
+    <link href="http://longshen.github.io/blog/2015/10/24/use-octopress/"/>
+    <updated>2015-10-24T15:28:35+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/10/24/use-octopress</id>
+    <content type="html"><![CDATA[<h2>一、搭建OctoPress</h2>
+
+<h3>安装发布</h3>
+
+<p>参考“Coding 4 Fun”blog的<a href="http://c4fun.cn/blog/2013/11/19/hello-octopress/#more">开启OctoPress之旅</a></p>
+
+<h3>更改主题</h3>
+
+<p>安装方法如下：
+<code>sh
+cd your_octopress_directory
+git clone https://github.com/lijinma/jin.git .themes/jin
+rake install['jin']
+rake generate
+</code>
+可在<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">OctoPress主题列表</a>选择喜欢的主题。</p>
+
+<p><strong>特别注意：先选好主题后，再开始添加插件，</strong>由于很多插件需要修改对应html文件，安装新主题后，需要重新修改。</p>
+
+<h3>评论插件</h3>
+
+<h3>标签插件</h3>
+
+<p><a href="http://www.jianshu.com/p/0ac2ac1a8e45">http://www.jianshu.com/p/0ac2ac1a8e45</a></p>
+
+<h2>二、常用命令</h2>
+
+<h3>blog管理</h3>
+
+<pre><code class="sh">#新建文章
+rake new_post[“new_title”]
+#生成网站
+rake generate
+#本地预览网站
+rake preview
+#部署
+rake deploy
+</code></pre>
+
+<h3>源码管理</h3>
+
+<pre><code class="sh">#git相关命令
+git add .
+git commit -m "message"
+git push origin source
+</code></pre>
+
+<h2>三、常见问题</h2>
+
+<h3>rake命令无法加特殊字符（如“’等）</h3>
+
+<p>常用的命令是<code>rake new_post[“new_title”]</code>。但是在ZSH下，输入时会提示错误：</p>
+
+<pre><code class="sh">zsh: no matches found: new_post[new_title]
+</code></pre>
+
+<p>我们可以用转义符来解决这一问题，但是每次这样操作会特别繁琐。解决方案是在~/.zshrc文件下，加入这样一行内容：</p>
+
+<pre><code class="sh">alias rake="noglob rake"
+</code></pre>
+
+<h3>generate出现invalid byte sequence</h3>
+
+<p>MAC或者Windows下运行<code>rake genreate</code>出现invalid byte sequence，如下：</p>
+
+<pre><code class="sh">jekyll 2.5.3 | Error:  invalid byte sequence in US-ASCII
+</code></pre>
+
+<p>MAC或者Windows默认是使用ASCII编码，需要设置UTF-8编码。解决方案是在~/.zshrc文件下，加入这样两行内容：</p>
+
+<pre><code class="sh">export LC_ALL=zh_CN.UTF-8
+export LANG=zh_CN.UTF-8
+</code></pre>
+
+<h3>generate出现Pygments can&rsquo;t parse</h3>
+
+<p>运行<code>rake genreate</code>出现Pygments can&rsquo;t parse错误，如下：</p>
+
+<pre><code class="sh">jekyll 2.5.3 | Error:  Pygments can't parse unknown language: zsh.
+</code></pre>
+
+<p>jekyll的语法高亮无法识别zsh语言。是由于编码文章时，使用如下代码块。</p>
+
+<blockquote><p>```zsh<br>
+XXX<br>
+```</p></blockquote>
+
+<p>最简单的解决方案是，代码块不使用zsh，改为其他语法相近的语言，如sh，bash。</p>
+]]></content>
+  </entry>
+  
+</feed>

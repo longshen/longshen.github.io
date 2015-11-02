@@ -4,7 +4,7 @@
   <title><![CDATA[longshen]]></title>
   <link href="http://longshen.github.io/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-10-24T21:00:25+08:00</updated>
+  <updated>2015-10-30T22:40:14+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -14,13 +14,72 @@
 
   
   <entry>
+    <title type="html"><![CDATA[OS X目录说明]]></title>
+    <link href="http://longshen.github.io/blog/2015/10/27/mac-directory-detail/"/>
+    <updated>2015-10-27T22:55:29+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/10/27/mac-directory-detail</id>
+    <content type="html"><![CDATA[<h2>一、OS X目录简介</h2>
+
+<p>Mac OS X 10开始，结合了BSD Unix、OpenStep和Mac OS 9的元素。并通过Unix2003认证，成为被认证的Unix系统。所以其目录结构基本符合Unix系统目录结构。
+但是有很多目录在Finder中并看不到，这是因为这些目录的被设置了隐藏属性，我们可以在终端窗口中利用unix命令查看。
+<img src="http://longshen.github.io/media/14459590294258.jpg" alt="" /></p>
+
+<h2>二、OS X目录结构</h2>
+
+<h3>符合Unix传统的目录</h3>
+
+<p><img src="http://longshen.github.io/media/14459591439786.jpg" alt="" /></p>
+
+<p>Unix传统的各目录存储内容，大概如上图描述（前半部分是目录缩写对应的英文全称，后半部分是该目录的存储内容），就不详细解释了。</p>
+
+<h3>OS X特有的目录</h3>
+
+<p><img src="http://longshen.github.io/media/14459594164710.jpg" alt="" /></p>
+
+<ul>
+<li>Application,</li>
+</ul>
+
+
+<h2>三、常用软件所在目录</h2>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[使用OctoPress]]></title>
     <link href="http://longshen.github.io/blog/2015/10/24/use-octopress/"/>
     <updated>2015-10-24T15:28:35+08:00</updated>
     <id>http://longshen.github.io/blog/2015/10/24/use-octopress</id>
     <content type="html"><![CDATA[<h2>一、搭建OctoPress</h2>
 
-<p><a href="http://c4fun.cn/blog/2013/11/19/hello-octopress/#more">安装发布github</a></p>
+<h3>安装发布</h3>
+
+<p>参考“Coding 4 Fun”blog的<a href="http://c4fun.cn/blog/2013/11/19/hello-octopress/#more">开启OctoPress之旅</a></p>
+
+<h3>更改主题</h3>
+
+<p>安装方法如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nb">cd </span>your_octopress_directory
+</span><span class='line'>git clone https://github.com/lijinma/jin.git .themes/jin
+</span><span class='line'>rake install<span class="o">[</span><span class="s1">&#39;jin&#39;</span><span class="o">]</span>
+</span><span class='line'>rake generate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可在<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">OctoPress主题列表</a>选择喜欢的主题。</p>
+
+<p><strong>特别注意：先选好主题后，再开始添加插件，</strong>由于很多插件需要修改对应html文件，安装新主题后，需要重新修改。</p>
+
+<h3>评论插件</h3>
+
+<h3>标签插件</h3>
+
+<p><a href="http://www.jianshu.com/p/0ac2ac1a8e45">http://www.jianshu.com/p/0ac2ac1a8e45</a></p>
 
 <h2>二、常用命令</h2>
 
@@ -105,8 +164,8 @@
 
 <p>jekyll的语法高亮无法识别zsh语言。是由于编码文章时，使用如下代码块。</p>
 
-<blockquote><p>```zsh
-XXX
+<blockquote><p>```zsh<br>
+XXX<br>
 ```</p></blockquote>
 
 <p>最简单的解决方案是，代码块不使用zsh，改为其他语法相近的语言，如sh，bash。</p>

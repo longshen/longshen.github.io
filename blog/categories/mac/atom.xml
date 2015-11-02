@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac | longshen]]></title>
+  <link href="http://longshen.github.io/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://longshen.github.io/"/>
+  <updated>2015-10-30T22:40:14+08:00</updated>
+  <id>http://longshen.github.io/</id>
+  <author>
+    <name><![CDATA[longshen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X目录说明]]></title>
+    <link href="http://longshen.github.io/blog/2015/10/27/mac-directory-detail/"/>
+    <updated>2015-10-27T22:55:29+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/10/27/mac-directory-detail</id>
+    <content type="html"><![CDATA[<h2>一、OS X目录简介</h2>
+
+<p>Mac OS X 10开始，结合了BSD Unix、OpenStep和Mac OS 9的元素。并通过Unix2003认证，成为被认证的Unix系统。所以其目录结构基本符合Unix系统目录结构。
+但是有很多目录在Finder中并看不到，这是因为这些目录的被设置了隐藏属性，我们可以在终端窗口中利用unix命令查看。
+<img src="/media/14459590294258.jpg" alt="" /></p>
+
+<h2>二、OS X目录结构</h2>
+
+<h3>符合Unix传统的目录</h3>
+
+<p><img src="/media/14459591439786.jpg" alt="" /></p>
+
+<p>Unix传统的各目录存储内容，大概如上图描述（前半部分是目录缩写对应的英文全称，后半部分是该目录的存储内容），就不详细解释了。</p>
+
+<h3>OS X特有的目录</h3>
+
+<p><img src="/media/14459594164710.jpg" alt="" /></p>
+
+<ul>
+<li>Application,</li>
+</ul>
+
+
+<h2>三、常用软件所在目录</h2>
+]]></content>
+  </entry>
+  
+</feed>
