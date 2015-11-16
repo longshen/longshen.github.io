@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OS X目录说明 - longshen</title>
+  <title>文件同步工具_Seafile - longshen</title>
   <meta name="author" content="longshen">
 
   
-  <meta name="description" content="一、OS X目录简介 Mac OS X 10开始，结合了BSD Unix、OpenStep和Mac OS 9的元素。并通过Unix2003认证，成为被认证的Unix系统。所以其目录结构基本符合Unix系统目录结构。
-但是有很多目录在Finder中并看不到，这是因为这些目录的被设置了隐藏属性， &hellip;">
+  <meta name="description" content="项目开发过程，团队成员经常协同编辑同一个文件。普通文档类的，可以使用自建的Confluence、Wordpress等，或者在线服务Worktitle、tower等。而像excel、思维导图（xmind）等复杂的文档文件，这些在线编辑协作的工具都未能支持，需要靠同步文件进行协作。 可惜 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://longshen.github.io/blog/2015/10/27/mac-directory-detail">
+  <link rel="canonical" href="http://longshen.github.io/blog/2015/11/16/file-syn-seafile">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="longshen" type="application/atom+xml">
@@ -69,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">OS X目录说明</h1>
+      <h1 class="entry-title">文件同步工具_Seafile</h1>
     
     
       <p class="meta">
@@ -85,37 +84,32 @@
   
 
 
-<time datetime="2015-10-27T22:55:29+08:00" pubdate data-updated="true"></time>
+<time datetime="2015-11-16T22:49:10+08:00" pubdate data-updated="true"></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>一、OS X目录简介</h2>
+<div class="entry-content"><blockquote><p>项目开发过程，团队成员经常协同编辑同一个文件。普通文档类的，可以使用自建的Confluence、Wordpress等，或者在线服务Worktitle、tower等。而<strong>像excel、思维导图（xmind）等复杂的文档文件</strong>，这些在线编辑协作的工具都未能支持，需要靠同步文件进行协作。</p>
 
-<p>Mac OS X 10开始，结合了BSD Unix、OpenStep和Mac OS 9的元素。并通过Unix2003认证，成为被认证的Unix系统。所以其目录结构基本符合Unix系统目录结构。
-但是有很多目录在Finder中并看不到，这是因为这些目录的被设置了隐藏属性，我们可以在终端窗口中利用unix命令查看。
-<img src="/media/14459590294258.jpg" alt="" /></p>
+<p>可惜 Dropbox 在国内多次遭屏蔽，而国产的百度云、快盘等产品也不太稳定。为保证协作效率，可以使用Seafile自建云存储平台。</p></blockquote>
 
-<h2>二、OS X目录结构</h2>
+<h2>服务器</h2>
 
-<h3>符合Unix传统的目录</h3>
+<p>直接见<a href="http://www.centoscn.com/CentosServer/ftp/2015/0324/5003.html">Centos部署Seafile开源文件云存储服务器</a></p>
 
-<p><img src="/media/14459591439786.jpg" alt="" /></p>
+<blockquote><p>记得关闭防火墙
+<code>/sbin/iptables -I INPUT -p tcp --dport 8000 -j ACCEPT</code>
+<code>/sbin/iptables -I INPUT -p tcp --dport 8082 -j ACCEPT</code></p></blockquote>
 
-<p>Unix传统的各目录存储内容，大概如上图描述（前半部分是目录缩写对应的英文全称，后半部分是该目录的存储内容），就不详细解释了。</p>
+<h2>客户端</h2>
 
-<h3>OS X特有的目录</h3>
+<p><a href="https://www.seafile.com/download/">Seafile官网下载链接</a></p>
 
-<p><img src="/media/14459594164710.jpg" alt="" /></p>
+<h2>参考</h2>
 
-<ul>
-<li>Application,</li>
-</ul>
-
-
-<h2>三、常用软件所在目录</h2>
+<p><a href="http://manual-cn.seafile.com/index.html">Seafile服务器中文手册</a></p>
 </div>
 
 
@@ -138,12 +132,12 @@
   
 
 
-<time datetime="2015-10-27T22:55:29+08:00" pubdate data-updated="true"></time>
+<time datetime="2015-11-16T22:49:10+08:00" pubdate data-updated="true"></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/mac/'>mac</a>
+    <a class='category' href='/blog/categories/xiang-mu-guan-li/'>项目管理</a>
   
 </span>
 
@@ -152,7 +146,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://longshen.github.io/blog/2015/10/27/mac-directory-detail/" data-via="" data-counturl="http://longshen.github.io/blog/2015/10/27/mac-directory-detail/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://longshen.github.io/blog/2015/11/16/file-syn-seafile/" data-via="" data-counturl="http://longshen.github.io/blog/2015/11/16/file-syn-seafile/" >Tweet</a>
   
   
   
@@ -161,10 +155,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/10/24/use-octopress/" title="Previous Post: 使用OctoPress">&laquo; 使用OctoPress</a>
+        <a class="basic-alignment left" href="/blog/2015/10/27/mac-directory-detail/" title="Previous Post: OS X目录说明">&laquo; OS X目录说明</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/11/16/file-syn-seafile/" title="Next Post: 文件同步工具_Seafile">文件同步工具_Seafile &raquo;</a>
       
     </p>
   </footer>

@@ -4,7 +4,7 @@
   <title><![CDATA[longshen]]></title>
   <link href="http://longshen.github.io/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-10-30T22:40:14+08:00</updated>
+  <updated>2015-11-16T22:53:02+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[文件同步工具_Seafile]]></title>
+    <link href="http://longshen.github.io/blog/2015/11/16/file-syn-seafile/"/>
+    <updated>2015-11-16T22:49:10+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/11/16/file-syn-seafile</id>
+    <content type="html"><![CDATA[<blockquote><p>项目开发过程，团队成员经常协同编辑同一个文件。普通文档类的，可以使用自建的Confluence、Wordpress等，或者在线服务Worktitle、tower等。而<strong>像excel、思维导图（xmind）等复杂的文档文件</strong>，这些在线编辑协作的工具都未能支持，需要靠同步文件进行协作。</p>
+
+<p>可惜 Dropbox 在国内多次遭屏蔽，而国产的百度云、快盘等产品也不太稳定。为保证协作效率，可以使用Seafile自建云存储平台。</p></blockquote>
+
+<h2>服务器</h2>
+
+<p>直接见<a href="http://www.centoscn.com/CentosServer/ftp/2015/0324/5003.html">Centos部署Seafile开源文件云存储服务器</a></p>
+
+<blockquote><p>记得关闭防火墙
+<code>/sbin/iptables -I INPUT -p tcp --dport 8000 -j ACCEPT</code>
+<code>/sbin/iptables -I INPUT -p tcp --dport 8082 -j ACCEPT</code></p></blockquote>
+
+<h2>客户端</h2>
+
+<p><a href="https://www.seafile.com/download/">Seafile官网下载链接</a></p>
+
+<h2>参考</h2>
+
+<p><a href="http://manual-cn.seafile.com/index.html">Seafile服务器中文手册</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X目录说明]]></title>
