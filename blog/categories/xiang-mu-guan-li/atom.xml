@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 项目管理 | longshen]]></title>
   <link href="http://longshen.github.io/blog/categories/xiang-mu-guan-li/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-11-16T22:53:02+08:00</updated>
+  <updated>2015-11-17T23:55:05+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -26,13 +26,27 @@
 
 <p>直接见<a href="http://www.centoscn.com/CentosServer/ftp/2015/0324/5003.html">Centos部署Seafile开源文件云存储服务器</a></p>
 
-<blockquote><p>记得关闭防火墙
-<code>/sbin/iptables -I INPUT -p tcp --dport 8000 -j ACCEPT</code>
+<blockquote><p>记得关闭防火墙</p>
+
+<p><code>/sbin/iptables -I INPUT -p tcp --dport 8000 -j ACCEPT</code>
 <code>/sbin/iptables -I INPUT -p tcp --dport 8082 -j ACCEPT</code></p></blockquote>
 
 <h2>客户端</h2>
 
 <p><a href="https://www.seafile.com/download/">Seafile官网下载链接</a></p>
+
+<h2>其他问题</h2>
+
+<h3>服务器宕机，数据如何恢复</h3>
+
+<p>Seafile分两类数据，一类是数据库（用户信息等），一类是资料库数据（用户共享的文件库）。</p>
+
+<p><strong>不备份的影响</strong>
+第一类在SeaHub宕机（当然指数据无法恢复那种）后，则丢失了。
+第二类有点像git，在客户端会有副本。在SeaHub重新启动后，可以从客户端重新提交。（具体丢失的数据量取决于客户端副本的更新时间）</p>
+
+<p><strong>备份方法</strong>
+<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
 
 <h2>参考</h2>
 
