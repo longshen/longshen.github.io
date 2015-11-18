@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blog | longshen]]></title>
   <link href="http://longshen.github.io/blog/categories/blog/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-11-18T23:00:51+08:00</updated>
+  <updated>2015-11-18T23:14:51+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -41,7 +41,7 @@ rake generate
 
 <h3>标签插件</h3>
 
-<p><a href="http://www.jianshu.com/p/0ac2ac1a8e45">http://www.jianshu.com/p/0ac2ac1a8e45</a></p>
+<p>参考<a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">为octopress添加分类(category)列表</a></p>
 
 <h2>二、常用命令</h2>
 
