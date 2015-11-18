@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | longshen]]></title>
+  <link href="http://longshen.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://longshen.github.io/"/>
+  <updated>2015-11-18T22:17:03+08:00</updated>
+  <id>http://longshen.github.io/</id>
+  <author>
+    <name><![CDATA[longshen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Linux间传输文件]]></title>
+    <link href="http://longshen.github.io/blog/2015/11/18/sync-file-between-linux/"/>
+    <updated>2015-11-18T22:14:45+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/11/18/sync-file-between-linux</id>
+    <content type="html"><![CDATA[<p>Linux之间传输文件，可以使用scp、rsync等命令进行传输。而具体经常在某两个机器之间进行传输，一般会先增加两台机器间的ssh信任，避免每次都需要输入密码。</p>
+
+<h2>增加ssh信任</h2>
+
+<h3>本地生成ssh_key</h3>
+
+<p>执行<code>ssh-keygen -t rsa</code>，都选择默认（一直回车）
+会在/home/UserName/.ssh/目录下生成<strong>id_rsa</strong>和<strong>id_rsa.pub</strong>文件。</p>
+
+<blockquote><p><strong>注：MAC OS会生成在/home/UserName/.ssh/目录下，ssh-keygen会有提示</strong></p></blockquote>
+
+<h3>添加本地ssh_key到远程机器</h3>
+
+<p>拷贝id_rsa.pub里面的信息，添加到远程机器的/home/UserName/.ssh/authorized_keys文件中。</p>
+
+<blockquote><p>如果没有authorized_keys文件，则新建一个。
+可以使用scp命令先复制id_rsa.pub到远程机器，再执行<code>cat id\_dsa.pub &gt;&gt; authorized\_keys</code></p></blockquote>
+
+<h2>scp命令</h2>
+
+<p>格式为</p>
+
+<p><code>scp local_file remote_username@remote_ip:remote_folder</code>
+<code>scp -r local_folder remote_ip:remote_folder</code></p>
+
+<p>比如：
+<code>bash
+ #拷贝远程机器文件aaaa.txt到本地
+ scp longshen@192.168.116.129:/home/longshen/aaaa.txt /local_path/
+ #拷贝本地文件aaaa.txt到远程机器
+ scp /local_path/aaaa.txt longshen@192.168.116.129:/home/longshen/aaaa.txt
+ #拷贝远程机器remote_folder到本地
+ scp longshen@192.168.116.129:/home/longshen/remote_folder /local_path/
+ #拷贝本地文件夹local_folder到远程机器
+ scp /local_path/local_folder longshen@192.168.116.129:/home/longshen/
+</code></p>
+
+<h2>rsync命令</h2>
+
+<p>格式为（可参考<a href="http://blog.chinaunix.net/uid-10362953-id-2961174.html">rsync详解 </a>）</p>
+
+<pre><code class="bash">rsync [OPTION]... SRC DEST
+rsync [OPTION]... SRC [USER@]HOST:DEST
+rsync [OPTION]... [USER@]HOST:SRC DEST
+rsync [OPTION]... [USER@]HOST::SRC DEST
+rsync [OPTION]... SRC [USER@]HOST::DEST
+</code></pre>
+
+<p>例如</p>
+
+<pre><code class="bash">rsync -va test_rsync longshen@192.168.116.129:/home/longshen
+</code></pre>
+
+<h2>scp、rsync区别</h2>
+
+<h3>命令实现的区别</h3>
+
+<p>scp本身还是依赖系统ssh的，rsync是自己开发的一套协议，监听本机873端口</p>
+
+<h3>功能区别</h3>
+
+<ul>
+<li>scp是把复制，即文件全部复制过去，当文件修改后还是把所有文件复制过去。</li>
+<li>rsync是更新，即第一次是把所有文件同步过去，当文件修改后，只把修改的文件同步过去。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

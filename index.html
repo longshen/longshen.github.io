@@ -9,7 +9,8 @@
   <meta name="author" content="longshen">
 
   
-  <meta name="description" content="项目开发过程，团队成员经常协同编辑同一个文件。普通文档类的，可以使用自建的Confluence、Wordpress等，或者在线服务Worktitle、tower等。而像excel、思维导图（xmind）等复杂的文档文件，这些在线编辑协作的工具都未能支持，需要靠同步文件进行协作。 可惜 &hellip;">
+  <meta name="description" content="Linux之间传输文件，可以使用scp、rsync等命令进行传输。而具体经常在某两个机器之间进行传输，一般会先增加两台机器间的ssh信任，避免每次都需要输入密码。 增加ssh信任 本地生成ssh_key 执行ssh-keygen -t rsa，都选择默认（一直回车）
+会在/home/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,124 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-11-18T22:14:45+08:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Linux之间传输文件，可以使用scp、rsync等命令进行传输。而具体经常在某两个机器之间进行传输，一般会先增加两台机器间的ssh信任，避免每次都需要输入密码。</p>
+
+<h2>增加ssh信任</h2>
+
+<h3>本地生成ssh_key</h3>
+
+<p>执行<code>ssh-keygen -t rsa</code>，都选择默认（一直回车）
+会在/home/UserName/.ssh/目录下生成<strong>id_rsa</strong>和<strong>id_rsa.pub</strong>文件。</p>
+
+<blockquote><p><strong>注：MAC OS会生成在/home/UserName/.ssh/目录下，ssh-keygen会有提示</strong></p></blockquote>
+
+<h3>添加本地ssh_key到远程机器</h3>
+
+<p>拷贝id_rsa.pub里面的信息，添加到远程机器的/home/UserName/.ssh/authorized_keys文件中。</p>
+
+<blockquote><p>如果没有authorized_keys文件，则新建一个。
+可以使用scp命令先复制id_rsa.pub到远程机器，再执行<code>cat id\_dsa.pub &gt;&gt; authorized\_keys</code></p></blockquote>
+
+<h2>scp命令</h2>
+
+<p>格式为</p>
+
+<p><code>scp local_file remote_username@remote_ip:remote_folder</code>
+<code>scp -r local_folder remote_ip:remote_folder</code></p>
+
+<p>比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'> <span class="c">#拷贝远程机器文件aaaa.txt到本地</span>
+</span><span class='line'> scp longshen@192.168.116.129:/home/longshen/aaaa.txt /local_path/
+</span><span class='line'> <span class="c">#拷贝本地文件aaaa.txt到远程机器</span>
+</span><span class='line'> scp /local_path/aaaa.txt longshen@192.168.116.129:/home/longshen/aaaa.txt
+</span><span class='line'> <span class="c">#拷贝远程机器remote_folder到本地</span>
+</span><span class='line'> scp longshen@192.168.116.129:/home/longshen/remote_folder /local_path/
+</span><span class='line'> <span class="c">#拷贝本地文件夹local_folder到远程机器</span>
+</span><span class='line'> scp /local_path/local_folder longshen@192.168.116.129:/home/longshen/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>rsync命令</h2>
+
+<p>格式为（可参考<a href="http://blog.chinaunix.net/uid-10362953-id-2961174.html">rsync详解 </a>）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC DEST
+</span><span class='line'>rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span>HOST:DEST
+</span><span class='line'>rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span>HOST:SRC DEST
+</span><span class='line'>rsync <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>USER@<span class="o">]</span>HOST::SRC DEST
+</span><span class='line'>rsync <span class="o">[</span>OPTION<span class="o">]</span>... SRC <span class="o">[</span>USER@<span class="o">]</span>HOST::DEST
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>例如</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rsync -va test_rsync longshen@192.168.116.129:/home/longshen
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>scp、rsync区别</h2>
+
+<h3>命令实现的区别</h3>
+
+<p>scp本身还是依赖系统ssh的，rsync是自己开发的一套协议，监听本机873端口</p>
+
+<h3>功能区别</h3>
+
+<ul>
+<li>scp是把复制，即文件全部复制过去，当文件修改后还是把所有文件复制过去。</li>
+<li>rsync是更新，即第一次是把所有文件同步过去，当文件修改后，只把修改的文件同步过去。</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -404,6 +523,10 @@ XXX<br>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/11/16/file-syn-seafile/">文件同步工具_Seafile</a>
