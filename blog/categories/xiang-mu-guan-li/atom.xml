@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 项目管理 | longshen]]></title>
   <link href="http://longshen.github.io/blog/categories/xiang-mu-guan-li/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-11-18T23:14:51+08:00</updated>
+  <updated>2015-11-19T20:39:41+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -46,7 +46,37 @@
 第二类有点像git，在客户端会有副本。在SeaHub重新启动后，可以从客户端重新提交。（具体丢失的数据量取决于客户端副本的更新时间）</p>
 
 <p><strong>备份方法</strong>
-<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
+1、备份数据
+（不同路径、mysql账号密码、备份机器IP记得修改）</p>
+
+<pre><code class="bash">#!/bin/bash
+backup_dir="/usr/local/file/backup_db"
+mysqldump_cmd="mysqldump -uroot -p123456 --opt"
+
+$mysqldump_cmd ccnet-db &gt; $backup_dir/ccnet-db.sql.`date +"%Y-%m-%d-%H-%M-%S"`
+$mysqldump_cmd seafile-db &gt; $backup_dir/seafile-db.sql.`date +"%Y-%m-%d-%H-%M-%S"`
+$mysqldump_cmd seahub-db &gt; $backup_dir/seahub-db.sql.`date +"%Y-%m-%d-%H-%M-%S"`
+echo "backup db success!"
+rsync -va . root@10.10.159.176:/usr/local/file/
+echo "sync data to 10.10.159.176 success!"
+</code></pre>
+
+<p>2、定时备份==
+使用crontab定时执行第1步脚本。</p>
+
+<pre><code class="bash">crontab -e
+#添加如下执行任务（每天0点0分进行备份）
+0 0 * * * /usr/local/file/backup_seafile_data.sh
+
+#重新加载crontab配置
+/sbin/service crond reload
+
+#Note: 需要为脚本添加可执行权限，否则定时任务不生效
+chmod +x /usr/local/file/backup_seafile_data.sh
+</code></pre>
+
+<p>rsyc方法参考<a href="https://longshen.github.io/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
+具体备份内容细见<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
 
 <h2>参考</h2>
 

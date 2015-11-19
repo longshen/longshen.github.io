@@ -241,7 +241,58 @@
 第二类有点像git，在客户端会有副本。在SeaHub重新启动后，可以从客户端重新提交。（具体丢失的数据量取决于客户端副本的更新时间）</p>
 
 <p><strong>备份方法</strong>
-<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
+1、备份数据
+（不同路径、mysql账号密码、备份机器IP记得修改）</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="nv">backup_dir</span><span class="o">=</span><span class="s2">&quot;/usr/local/file/backup_db&quot;</span>
+</span><span class='line'><span class="nv">mysqldump_cmd</span><span class="o">=</span><span class="s2">&quot;mysqldump -uroot -p123456 --opt&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$mysqldump_cmd</span> ccnet-db &gt; <span class="nv">$backup_dir</span>/ccnet-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">$mysqldump_cmd</span> seafile-db &gt; <span class="nv">$backup_dir</span>/seafile-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span>
+</span><span class='line'><span class="nv">$mysqldump_cmd</span> seahub-db &gt; <span class="nv">$backup_dir</span>/seahub-db.sql.<span class="sb">`</span>date +<span class="s2">&quot;%Y-%m-%d-%H-%M-%S&quot;</span><span class="sb">`</span>
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;backup db success!&quot;</span>
+</span><span class='line'>rsync -va . root@10.10.159.176:/usr/local/file/
+</span><span class='line'><span class="nb">echo</span> <span class="s2">&quot;sync data to 10.10.159.176 success!&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2、定时备份==
+使用crontab定时执行第1步脚本。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>crontab -e
+</span><span class='line'><span class="c">#添加如下执行任务（每天0点0分进行备份）</span>
+</span><span class='line'><span class="m">0</span> <span class="m">0</span> * * * /usr/local/file/backup_seafile_data.sh
+</span><span class='line'>
+</span><span class='line'><span class="c">#重新加载crontab配置</span>
+</span><span class='line'>/sbin/service crond reload
+</span><span class='line'>
+</span><span class='line'><span class="c">#Note: 需要为脚本添加可执行权限，否则定时任务不生效</span>
+</span><span class='line'>chmod +x /usr/local/file/backup_seafile_data.sh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>rsyc方法参考<a href="https://longshen.github.io/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
+具体备份内容细见<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
 
 <h2>参考</h2>
 
