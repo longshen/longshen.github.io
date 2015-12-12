@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 项目管理 | longshen]]></title>
   <link href="http://longshen.github.io/blog/categories/xiang-mu-guan-li/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-11-28T17:03:56+08:00</updated>
+  <updated>2015-12-12T11:35:15+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -162,7 +162,7 @@ echo "sync data to 10.10.159.176 success!"
 chmod +x /usr/local/file/backup_seafile_data.sh
 </code></pre>
 
-<p>rsyc方法参考<a href="https://longshen.github.io/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
+<p>rsyc方法参考<a href="http://longshen.github.io/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
 具体备份内容细见<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
 
 <h2>参考</h2>

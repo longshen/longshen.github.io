@@ -4,7 +4,7 @@
   <title><![CDATA[longshen]]></title>
   <link href="http://longshen.github.io/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-11-28T17:03:56+08:00</updated>
+  <updated>2015-12-12T11:35:15+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -12,6 +12,153 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MAC OS下载android源码]]></title>
+    <link href="http://longshen.github.io/blog/2015/12/12/download-android-source-on-mac-os/"/>
+    <updated>2015-12-12T11:27:08+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/12/12/download-android-source-on-mac-os</id>
+    <content type="html"><![CDATA[<p>下载android源码大致可以分为4个步骤：
+* 新建硬盘镜像
+* 安装JDK
+* 安装相关依赖工具和Repo
+* 下载源码
+建议结合官网<a href="http://source.android.com/source/initializing.html#setting-up-a-mac-os-x-build-environment">Setting up a Mac OS build environment</a>和<a href="http://source.android.com/source/downloading.html">Downloading the Source</a>阅读。</p>
+
+<h2>一、新建硬盘镜像</h2>
+
+<p>打开磁盘工具（应用程序/实用工具/磁盘工具），选择文件->新建->新建空白映像。
+<img src="http://longshen.github.io/media/14498910094346.jpg" alt="" /></p>
+
+<p>大小：自定义40G以上，分区：单个分区-Apple分区图；映像格式：稀疏磁盘映像。</p>
+
+<blockquote><p>其中自定义大小根据要下载编译的android版本而定，比如下载android5.1.1的代码就耗用30多G空间。加上后续编译，应该在50G以上。</p></blockquote>
+
+<h2>二、安装JDK</h2>
+
+<p><a href="http://blog.sina.com.cn/s/blog_63fea2670102uwpt.html">JDK版本切换</a></p>
+
+<h2>三、安装相关依赖工具</h2>
+
+<h3>安装MacPorts</h3>
+
+<p>首先先安装MAC下的软件包管理工具MacPorts，从<a href="http://www.macports.org/install.php">www.macports.org</a>下载。</p>
+
+<blockquote><p>MacPorts提供了快速的pkg安装方式。<strong>前提：</strong>需要安装XCode和Xcode Command Line Tools，并且同意XCode许可证。</p></blockquote>
+
+<p>常用MacPorts命令</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#搜索索引中的软件</span>
+</span><span class='line'>port search name
+</span><span class='line'><span class="c">#安装新软件</span>
+</span><span class='line'>sudo port install name
+</span><span class='line'><span class="c">#卸载软件</span>
+</span><span class='line'>sudo port uninstall name
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>安装其他依赖包</h3>
+
+<p>安装gmake、libsdl、git、gnupg包
+执行<code>POSIXLY_CORRECT=1 sudo port -v install gmake libsdl git gnupg</code></p>
+
+<p>安装后使用<code>make --version</code>查看make版本，如果为3.82版本，由于这个版本有bug，编译android会有问题，需要回退到3.81。</p>
+
+<h3>安装repo</h3>
+
+<p>下载repo
+<code>curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo &gt; ~/bin/repo</code>
+修改repo权限
+<code>chmoda +x ~/bin/repo</code></p>
+
+<h2>四、下载android源码</h2>
+
+<h3>初始化目录下的源码信息</h3>
+
+<p><code>repo init -u [manifest的URL] -b [分支or某个修订]</code></p>
+
+<p>比如 <code>repo init -u https://android.googlesource.com/platform/manifest -b android-5.1.1_r28</code></p>
+
+<h3>同步代码</h3>
+
+<p><code>repo sync</code></p>
+
+<h3>出现error: Exited sync due to fetch errors解决方法</h3>
+
+<p>1、使用<code>repo sync -f -j10</code>命令
+2、增加循环重试</p>
+
+<blockquote><p>其中 <code>repo sync -f -j10</code> 含义如下：
+-f, &ndash;force-broken    continue sync even if a project fails to sync
+-j JOBS, &ndash;jobs=JOBS  projects to fetch simultaneously (default 4)</p></blockquote>
+
+<p>可使用以下脚本进行同步代码</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/bash </span>
+</span><span class='line'><span class="nv">PATH</span><span class="o">=</span>~/bin:<span class="nv">$PATH</span>
+</span><span class='line'>repo init -u https://android.googlesource.com/platform/manifest -b android-5.1.1_r28
+</span><span class='line'>repo sync -f -j10
+</span><span class='line'><span class="k">while</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>  <span class="nb">echo</span> <span class="s2">&quot;================sync failed, retry again =====&quot;</span>
+</span><span class='line'>  sleep <span class="m">3</span>
+</span><span class='line'>  repo sync -f -j10
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>五、常见问题</h2>
+
+<h3>安装MacPorts卡住</h3>
+
+<p><strong>原因</strong>
+可能刚开始没同意XCode许可证，导致一直pkg安装卡住</p>
+
+<p><strong>解决方法</strong>
+1. 使用MacPorts源码安装方式。
+2. 同意XCode许可证，重启机器。再重新安装</p>
+
+<h3>sudo: port: command not found</h3>
+
+<p>执行<code>POSIXLY_CORRECT=1 sudo port -v install gmake libsdl git gnupg</code>
+提示<code>sudo: port: command not found</code></p>
+
+<p><strong>原因</strong>
+port安装在
+可参考<a href="http://chenall.net/post/linux-sudo-config/">linux sudo 命令和配置文件/etc/sudoers介绍</a></p>
+
+<p><strong>解决方法</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo vim /etc/sudoers
+</span><span class='line'><span class="c">#在secure_path加入/opt/local/bin</span>
+</span><span class='line'>Defaults <span class="nv">secure_path</span><span class="o">=</span><span class="s2">&quot;/opt/local/bin:XXXX&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>六、参考</h2>
+
+<p><a href="http://www.cnblogs.com/liuqxFuture/archive/2012/12/18/2823717.html">Mac下下载android4.2源码，进行源码调试</a></p>
+
+<p><a href="http://blog.csdn.net/yangblocker/article/details/9673097">Mac OS X 10.8.4下Android4.2.2源码下载与编译</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[数据驱动业务_经验总结]]></title>
@@ -279,7 +426,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>rsyc方法参考<a href="https://longshen.github.io/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
+<p>rsyc方法参考<a href="http://longshen.github.io/blog/2015/11/18/sync-file-between-linux/">Linux间传输文件</a>
 具体备份内容细见<a href="http://manual-cn.seafile.com/maintain/backup_recovery.html">Seafile备份与恢复</a></p>
 
 <h2>参考</h2>
