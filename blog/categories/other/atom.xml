@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Other | longshen]]></title>
+  <link href="http://longshen.github.io/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://longshen.github.io/"/>
+  <updated>2016-01-03T20:46:45+08:00</updated>
+  <id>http://longshen.github.io/</id>
+  <author>
+    <name><![CDATA[longshen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[2015年度总结]]></title>
+    <link href="http://longshen.github.io/blog/2016/01/03/2015-summary/"/>
+    <updated>2016-01-03T16:34:17+08:00</updated>
+    <id>http://longshen.github.io/blog/2016/01/03/2015-summary</id>
+    <content type="html"><![CDATA[<p>又是新的一年，抽时间对过去的2015年在工作方面的进展做个简单的总结。2015年是苦逼的一年，也是成长的一年。从最开始共同负责项目，到独立负责项目；从只支持一个业务，到做成平台同时支持十来个公司内外的业务。无论是团队管理，项目管理，还是业务支撑，个人技术上都有所提升。</p>
+
+<ul>
+<li><p><strong>团队管理方面</strong></p>
+
+<p><!--虽然从2014年就开始负责部分团队和项目的工作，但是由于有以前的leader，我基本只需要做团队管理中的部分轻松的工作。比如结合项目发展方向来考虑和沟通成员的发展方向；时常组织团队活动；定期与成员做沟通等等。
+2015年4月份开始独立负责团队和项目，仍延续之前重点关注团队个人成长与发展，但慢慢的发现，团队发展方向模糊，团队只是延续着做着之前的工作。但是个人忙于处理日常业务事务，没重点考虑规划团队发展。团队陆续出现已在团队较长时间的骨干成员在团队中遇到发展瓶颈，部分骨干成员离去。虽然后续通过招聘和团队成员的培养弥补人才空缺，但是团队发展方向依旧未明朗。到年底才逐渐清晰，团队将专注于数据传输，扩展数据传输相关的业务，包括更多的客户端、服务器一体化方案。--></p>
+
+<p>从最开始只关注团队个人成长与发展，经历骨干人才的流失。到重视团队发展方向，招聘人才、培养构建人才梯队。
+团队管理需要同时明确团队发展方向与考虑成员个人发展。只明确团队发展方向，成员个人发展很容易与团队发展方向冲突；只考虑成员个人发展，短期发展问题不大，但是长期发展容易出现瓶颈。</p></li>
+<li><p><strong>项目管理方面</strong></p>
+
+<p>经过一年的实践与总结，理解并积累更多的项目管理工具，如<a href="http://longshen.github.io/blog/2015/11/16/file-syn-seafile/">Seafile</a>、Confluence、Worktitle等。对项目计划与执行，有了更深的理解，同时总结了一些方法，包括执行路线管理的方法、团队协作方法等。进一步体会到数据的重要性，<a href="http://longshen.github.io/blog/2015/11/28/data-driven-business/">总结数据驱动业务的经验</a>。</p></li>
+<li><p><strong>产品业务方面</strong></p>
+
+<p>  从只支持一个业务，到做成平台同时支持十来个公司内外的业务。对数据传输相关业务有深入的理解，挖掘出在下载领域P2SP技术能带来的各种价值。通过和公司内外各业务线的产品、技术、商务负责人交流，更加熟悉产品项目的运营、商务合作等方方面面，支撑业务的方法也更加成熟。</p></li>
+<li><p><strong>技术方面</strong></p>
+
+<p>  这时最重要的方面，但过去的一年，自己的提升非常有限。主要是总结已有的技术，包括p2sp下载技术、android网络通信、可靠传输协议等网络通信方面的技术。而新吸收的技术较少。
+  新的一年，需要重点提升技术能力。将重点积累服务器开发相关的技术，深入研究android系统。</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[首篇]]></title>
+    <link href="http://longshen.github.io/blog/2015/10/24/first-article/"/>
+    <updated>2015-10-24T15:26:30+08:00</updated>
+    <id>http://longshen.github.io/blog/2015/10/24/first-article</id>
+    <content type="html"><![CDATA[<h3>为什么用OctoPress</h3>
+
+<p>  以前总数是在各种blog网站（比如简书、csdn、cppblog等）注册个人blog，在其限定的框架内编写文章。偶尔遇到某些功能blog框架无法支持便非常不爽。故慢慢的不在blog更新文章，转而都记录到Evernote上，或者团队wiki（Confluence、Wordpress）。</p>
+
+<p>  而Evernote毕竟只是自己查看，团队wiki只有团队的少数人阅读。<strong>一方面不利于分享；另一方面由于缺少读者，导致文章写得随意，总结不够充分深入，不利于自己对知识的吸收和积累；还有人性有强烈的被认可赞同的欲望，Blog、公众号等能驱使自己多总结分享文章。</strong></p>
+
+<p>  前段时间换了MacPro笔记本，想想在Mac下搭个Blog，多写写文章分享出来。于是便发现了OctoPress</p>
+
+<h3>怎么用OctoPress</h3>
+
+<p>发现OctoPress后，第一件事当然是配置环境，搭建起来。然后是查找各种主题、插件等。但琢磨了半天，<em>发现主题再炫，插件再好，如果没有内容，然并卵</em>。故先不把精力放到主题、插件及使用方法上，开始写文章，在使用过程中遇到问题，再研究解决。</p>
+]]></content>
+  </entry>
+  
+</feed>

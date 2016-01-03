@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | longshen]]></title>
   <link href="http://longshen.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://longshen.github.io/"/>
-  <updated>2015-12-12T12:31:03+08:00</updated>
+  <updated>2016-01-03T20:46:45+08:00</updated>
   <id>http://longshen.github.io/</id>
   <author>
     <name><![CDATA[longshen]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[MAC OS下载android源码]]></title>
+    <title type="html"><![CDATA[Mac下载android源码]]></title>
     <link href="http://longshen.github.io/blog/2015/12/12/download-android-source-on-mac-os/"/>
     <updated>2015-12-12T11:27:08+08:00</updated>
     <id>http://longshen.github.io/blog/2015/12/12/download-android-source-on-mac-os</id>
@@ -32,7 +32,7 @@
 
 <p>大小：自定义40G以上，分区：单个分区-Apple分区图；映像格式：稀疏磁盘映像。</p>
 
-<blockquote><p>其中自定义大小根据要下载编译的android版本而定，比如下载android5.1.1的代码就耗用30多G空间。加上后续编译，应该在50G以上。</p></blockquote>
+<blockquote><p>其中自定义大小根据要下载编译的android版本而定，比如下载android5.1.1的代码就耗用40多G空间。加上后续编译，应该在60G以上。</p></blockquote>
 
 <h2>二、安装JDK</h2>
 
